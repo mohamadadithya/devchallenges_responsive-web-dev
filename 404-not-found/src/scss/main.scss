@@ -1,0 +1,109 @@
+:root {
+    --primaryColor: hsl(0, 0%, 20%);
+    --secondaryColor: hsl(0, 0%, 31%);
+    --tertierColor: hsl(0, 0%, 74%);
+    --fontNormal: 400;
+    --fontBold: 700;
+    --primaryFont: 'Space Mono', monospace;
+    --secondaryFont: 'Inconsolata', monospace;
+    --tertierFont: 'Montserrat', sans-serif;
+
+    font-size: 24px;
+}
+
+@import './mixins';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    outline: none;
+}
+
+body {
+    min-height: 100vh;
+    padding-top: calc(1rem - 4px);
+    font-family: var(--primaryFont);
+}
+
+.header {
+    margin-bottom: calc(3rem - 8px);
+
+    @include respond(desktop) {
+        margin-bottom: 4.5rem;
+    }
+
+    &__copy {
+        font-family: var(--secondaryFont);
+        letter-spacing: -0.08em;
+        text-transform: uppercase;
+    }
+}
+
+.row {
+    @include respond(desktop) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+    }
+
+    &__illustration {
+        width: 100%;
+        margin-bottom: calc(3rem - 12px);
+    }
+
+    .col {
+        &__text {
+            &--heading {
+                font-size: 2rem;
+                margin-bottom: calc(1rem + 6px);
+            }
+
+            &--body {
+                @include respond(desktop) {
+                    padding-right: 8rem;
+                }
+
+                font-size: calc(1rem - 6px);
+                color: var(--secondaryColor);
+                margin-bottom: calc(3rem - 6px);
+                letter-spacing: -0.035em;
+            }
+        }
+
+        &__button {
+            background-color: var(--primaryColor);
+            color: white;
+            font-weight: var(--fontBold);
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem calc(2rem - 5px);
+            font-size: calc(1rem - 10px);
+            letter-spacing: -0.035em;
+        }
+    }
+}
+
+.footer {
+    &__text {
+        font-family: var(--tertierFont);
+        font-size: calc(1rem - 10px);
+        margin-top: calc(5rem - 6px);
+        margin-bottom: 1rem;
+        text-align: center;
+        color: var(--tertierColor);
+    }
+}
+
+// Utility Classes
+.container {
+    margin: 0 1rem;
+
+    @include respond(desktop) {
+        margin: .8rem 3.208rem;
+    }
+}
